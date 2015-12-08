@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://www.smartcall.co.za/2010/12/service" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" name="SmartloadOrderService" targetNamespace="http://www.smartcall.co.za/2010/12/service">
+  <wsdl:types>
+<schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://www.smartcall.co.za/2010/12/service" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns="http://www.w3.org/2001/XMLSchema">
+			
+  <import namespace="http://www.smartcall.co.za/2010/12/service" schemaLocation="http://www.smartcallesb.co.za:8091/SmartcallServices2/SmartloadOrderService?xsd=SmartloadOrderService_schema1.xsd"/>
+		
+</schema>
+  </wsdl:types>
+  <wsdl:message name="getVoucherBatchOrderResponse">
+    <wsdl:part element="tns:getVoucherBatchOrderResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVoucherBatchOrder">
+    <wsdl:part element="tns:getVoucherBatchOrder" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SmartloadOrderService">
+    <wsdl:operation name="getVoucherBatchOrder">
+      <wsdl:input message="tns:getVoucherBatchOrder" name="getVoucherBatchOrder">
+    </wsdl:input>
+      <wsdl:output message="tns:getVoucherBatchOrderResponse" name="getVoucherBatchOrderResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SmartloadOrderServiceSoapBinding" type="tns:SmartloadOrderService">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsaw:UsingAddressing wsdl:required="false"/>
+    <wsp:PolicyReference URI="#SmartloadOrderServiceSoapBinding_WSAM_Addressing_Policy"/>
+    <wsdl:operation name="getVoucherBatchOrder">
+      <soap12:operation soapAction="" style="document"/>
+      <wsdl:input name="getVoucherBatchOrder">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getVoucherBatchOrderResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SmartloadOrderService">
+    <wsdl:port binding="tns:SmartloadOrderServiceSoapBinding" name="SmartloadOrderServicPort">
+      <soap12:address location="http://www.smartcallesb.co.za:8091/SmartcallServices2/SmartloadOrderService"/>
+    </wsdl:port>
+  </wsdl:service>
+    <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="SmartloadOrderServiceSoapBinding_WSAM_Addressing_Policy">
+		<wsam:Addressing xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" wsp:Optional="true">
+			<wsp:Policy/>
+		</wsam:Addressing>
+	</wsp:Policy>
+</wsdl:definitions>
